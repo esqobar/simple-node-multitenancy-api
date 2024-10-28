@@ -16,12 +16,12 @@ app.get('/', (req, res) => {
     res.send('Hello Nodejs Typescript Prisma World!')
 })
 
-app.get('/api/products', async (req, res) => {
+app.get('/api/v1/products', async (req, res) => {
     const products = await prisma[`${prefix(req.headers.host)}Product`].findMany()
     res.send(products)
 })
 
-app.post('/api/products', async (req, res) => {
+app.post('/api/v1/products', async (req, res) => {
     const product = await prisma[`${prefix(req.headers.host)}Product`].create({
         data: {
             title: req.body.title,
